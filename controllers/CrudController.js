@@ -1,5 +1,10 @@
 const crudModel = require('../models/Crud');
 
+mainController = (req, res) => {
+    res.render('home', {error: false, body: {} });
+}
+
+
 const allController = async (req, res) => {
     try {
         let doc = await crudModel.find({})
@@ -16,9 +21,9 @@ const postController = async (req, res) => {
     try {
         let doc = await body.save();
         console.log(doc);
-        res.send(doc);
+        res.send('Dados adicionados com sucesso');
     } catch (error) {
-        res.send(error)
+        res.render('home', {error, body: req.body})
     }
 }
 
@@ -35,4 +40,4 @@ const putController = async (req, res) => {
 }
 
 
-module.exports = {allController, postController, putController}
+module.exports = {mainController,allController, postController, putController}

@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 
 const crudSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    city: String,
+    name: {type: String, required: true},
+    age: {type:Number, required: true},
     position: String,
+    git: {type: String, required: true}
 })
 
 module.exports = mongoose.model('Crud', crudSchema);
